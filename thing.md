@@ -1,4 +1,4 @@
 # grixoblurrgatlevel20.github.io
 
-### shin shin put one in
+### mmm snak
 [snak gmae](snak.html)
