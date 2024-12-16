@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>snak gam</title>
+  <title>Snake Game with Two Foods</title>
   <style>
     body {
-      font-family: Wide Latin, serif;
+      font-family: "Wide Latin", serif;
       text-align: center;
       background-color: #f0f0f0;
       margin: 0;
@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-  <h1>Snake Game with Two Foods</h1>
+  <h1>2 food snak</h1>
   <canvas id="gameCanvas" width="400" height="400"></canvas>
   <script>
     const canvas = document.getElementById("gameCanvas");
@@ -86,12 +86,8 @@
         if (head.x === foods[i].x && head.y === foods[i].y) {
           score++;
           foods[i] = randomFood(); // Replace the eaten food with a new random position
+          snake.push({ ...snake[snake.length - 1] }); // Add a new segment to the snake
         }
-      }
-
-      // Remove the tail if no food is eaten
-      if (!foods.some(food => head.x === food.x && head.y === food.y)) {
-        snake.pop();
       }
 
       // Add the new head to the snake
@@ -107,6 +103,11 @@
       ) {
         alert(`Game Over! Your score is ${score}`);
         resetGame();
+      }
+
+      // Remove the tail if no food is eaten (this ensures the snake moves)
+      if (!foods.some(food => head.x === food.x && head.y === food.y)) {
+        snake.pop();
       }
     }
 
@@ -133,7 +134,7 @@
       draw();
     }
 
-    setInterval(gameLoop, 150); // Run the game every 150ms
+    setInterval(gameLoop, 100); // Run the game every 150ms
   </script>
 </body>
 </html>
