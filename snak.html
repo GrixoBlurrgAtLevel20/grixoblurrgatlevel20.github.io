@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake Game</title>
+  <title>snak game</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -98,7 +98,7 @@
         head.y >= canvas.height ||
         snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)
       ) {
-        alert(`Game Over! Your score is ${score}`);
+        alert(`u lose. score is ${score}`);
         resetGame();
       }
     }
@@ -126,7 +126,7 @@
       draw();
     }
 
-    setInterval(gameLoop, 150); // Run the game every 150ms
+    setInterval(gameLoop, 75); // Run the game every 150ms
   </script>
 </body>
 </html>
