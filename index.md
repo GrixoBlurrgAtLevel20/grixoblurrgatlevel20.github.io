@@ -1,4 +1,5 @@
 # grixoblurrgatlevel20.github.io
 
 ### mmm snak
-[snak gmae](tsnak.html)
+[tnak gmae](tsnak.html)
+[snak gmae](snak.html)
