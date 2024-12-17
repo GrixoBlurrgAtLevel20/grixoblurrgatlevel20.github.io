@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake Game with Two Foods</title>
+  <title>2 food snak</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Wide Latin, Serif;
       text-align: center;
       background-color: #f0f0f0;
       margin: 0;
@@ -35,16 +35,26 @@
 
     const boxSize = 20; // Size of each grid square
     let snake = [{ x: 200, y: 200 }]; // Snake starts in the center
-    let foods = [generateRandomPosition(), generateRandomPosition()]; // Two food items
+    let foods = [generateFoodPosition(), generateFoodPosition()]; // Two food items
     let direction = "RIGHT"; // Starting direction
     let score = 0;
 
-    // Generate a random position for food
-    function generateRandomPosition() {
-      return {
-        x: Math.floor(Math.random() * (canvas.width / boxSize)) * boxSize,
-        y: Math.floor(Math.random() * (canvas.height / boxSize)) * boxSize,
-      };
+    // Generate a random food position ensuring it doesn't overlap the snake
+    function generateFoodPosition() {
+      let position;
+      let invalidPosition;
+
+      do {
+        position = {
+          x: Math.floor(Math.random() * (canvas.width / boxSize)) * boxSize,
+          y: Math.floor(Math.random() * (canvas.height / boxSize)) * boxSize,
+        };
+
+        // Check if the position overlaps with the snake
+        invalidPosition = snake.some(segment => segment.x === position.x && segment.y === position.y);
+      } while (invalidPosition);
+
+      return position;
     }
 
     // Draw the game elements
@@ -85,7 +95,7 @@
       for (let i = 0; i < foods.length; i++) {
         if (head.x === foods[i].x && head.y === foods[i].y) {
           score++;
-          foods[i] = generateRandomPosition(); // Replace the eaten food
+          foods[i] = generateFoodPosition(); // Generate a new food position
           snake.push({ ...snake[snake.length - 1] }); // Add a new segment
         }
       }
@@ -117,7 +127,7 @@
       snake = [{ x: 200, y: 200 }]; // Snake starts in the center
       direction = "RIGHT"; // Reset the direction
       score = 0; // Reset the score
-      foods = [generateRandomPosition(), generateRandomPosition()]; // Generate new food positions
+      foods = [generateFoodPosition(), generateFoodPosition()]; // Generate new food positions
     }
 
     // Change the direction of the snake
