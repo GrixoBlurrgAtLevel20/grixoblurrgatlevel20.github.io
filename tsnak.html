@@ -111,12 +111,11 @@
       }
     }
 
-    // Reset the game
     function resetGame() {
-      snake = [{ x: 200, y: 200 }];
-      direction = "RIGHT";
-      score = 0;
-      foods = [randomFood(), randomFood()]; // Reset both foods
+      snake = [{ x: 200, y: 200 }]; // Start the snake at the center
+      direction = "RIGHT"; // Reset the direction
+      score = 0; // Reset the score
+      foods = [randomFood(), randomFood()]; // Generate new food positions
     }
 
     // Change the direction of the snake
