@@ -59,10 +59,12 @@
         ctx.strokeRect(segment.x, segment.y, boxSize, boxSize);
       });
 
-      // Draw the food
-      ctx.fillStyle = "#dc3545";
-      ctx.fillRect(food.x, food.y, boxSize, boxSize);
-
+// Draw both food items
+      foods.forEach(food => {
+        ctx.fillStyle = "#dc3545";
+        ctx.fillRect(food.x, food.y, boxSize, boxSize);
+      });
+      
       // Draw the score
       ctx.fillStyle = "#333";
       ctx.font = "20px Arial";
