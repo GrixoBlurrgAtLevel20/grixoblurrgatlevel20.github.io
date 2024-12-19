@@ -95,7 +95,8 @@
       for (let i = 0; i < foods.length; i++) {
         if (head.x === foods[i].x && head.y === foods[i].y) {
           score++;
-          foods[i] = [generateFoodPosition(), generateFoodPosition()]; // Generate a new food position
+          foods[i] = generateFoodPosition();
+          foods[i] = generateFoodPosition(); // Generate a new food position
           snake.push({ ...snake[snake.length - 1] }); // Add a new segment
         }
       }
